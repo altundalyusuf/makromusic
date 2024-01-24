@@ -10,7 +10,8 @@ module.exports = {
       colors: {
         primary: '#14B1B9',
         base: '#FFFFFF',
-        line18: '#ECEEEB'
+        line18: '#ECEEEB',
+        base: '#101828'
       }
     },
   },
