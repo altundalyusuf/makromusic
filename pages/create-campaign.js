@@ -1,5 +1,6 @@
 import ChoosePiece from '@/components/ChoosePiece'
 import Navbar from '@/components/Navbar'
+import axios from 'axios'
 import React from 'react'
 
 const loadingBarWidth = {
@@ -8,13 +9,32 @@ const loadingBarWidth = {
     end: 0
 }
 
-const createCampaign = () => {
+const createCampaign = ({ pieces }) => {
     return (
         <>
             <Navbar width={loadingBarWidth} />
-            <ChoosePiece />
+            <ChoosePiece pieces={pieces} />
         </>
     )
 }
 
 export default createCampaign
+
+export const getServerSideProps = async () => {
+    try {
+        const response = await axios.get("https://makromusic-web-task-api.onrender.com/search-on-spotify?q");
+
+        return {
+            props: {
+                pieces: response.data,
+            },
+        };
+    } catch (error) {
+        console.error(error)
+        return {
+            props: {
+                pieces: [],
+            }
+        }
+    }
+};

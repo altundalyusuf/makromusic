@@ -1,10 +1,14 @@
 import { useRouter } from "next/router";
 import CustomButton from "./CustomButton"
+import { useDispatch } from "react-redux";
+import { saveCreatedCampaign } from "@/redux/slices/createCampaignSlice";
 
 const Homepage = ({ campaign }) => {
     const router = useRouter();
+    const dispatch = useDispatch();
 
     const handleClick = () => {
+        dispatch(saveCreatedCampaign(campaign));
         router.push('/create-campaign');
     }
     return (
