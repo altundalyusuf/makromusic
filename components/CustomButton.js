@@ -1,10 +1,10 @@
 import React from 'react'
 
-const CustomButton = ({ customProps }) => {
+const CustomButton = ({ customProps, onClick = () => { } }) => {
     return (
         <>
             <div className='flex justify-center'>
-                <button className={`bg-primary p-3 rounded ${customProps.className}`}>
+                <button onClick={onClick} className={`bg-primary p-3 rounded active:bg-primaryActive transform active:scale-90 ${customProps.className}`}>
                     {customProps.name}
 
                 </button>

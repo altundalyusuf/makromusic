@@ -1,17 +1,27 @@
+import axios from "axios";
 import Homepage from "@/components/Homepage";
-import Head from "next/head";
 
-export default function Home() {
+export default function Home({ campaign }) {
   return (
     <>
-      <Head>
-        <title>makromusic Case</title>
-        <meta name="description" content="makromusic campaign pages for case" />
-      </Head>
-
-      <main style={{ fontFamily: 'Alata, sans-serif' }}>
-        <Homepage />
+      <main>
+        <Homepage campaign={campaign} />
       </main>
     </>
   );
 }
+
+export const getServerSideProps = async () => {
+  try {
+    const response = await axios.get("https://makromusic-web-task-api.onrender.com/create-campaign");
+
+    return {
+      props: {
+        campaign: response.data,
+      },
+    };
+  } catch (error) {
+    console.error(error)
+  }
+};
+

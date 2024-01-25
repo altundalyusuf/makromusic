@@ -1,6 +1,12 @@
+import { useRouter } from "next/router";
 import CustomButton from "./CustomButton"
 
-const Homepage = () => {
+const Homepage = ({ campaign }) => {
+    const router = useRouter();
+
+    const handleClick = () => {
+        router.push('/create-campaign');
+    }
     return (
         <>
             {/* Heading */}
@@ -8,7 +14,7 @@ const Homepage = () => {
 ">
                 makromusic Task
             </div>
-            <CustomButton customProps={{ name: 'Kampanya Oluştur', className: 'text-white' }} />
+            <CustomButton customProps={{ name: 'Kampanya Oluştur', className: 'text-white' }} onClick={handleClick} />
         </>
     )
 }

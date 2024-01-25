@@ -7,11 +7,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'sans': ['Alata', 'sans-serif'],
+      },
       colors: {
         primary: '#14B1B9',
-        base: '#FFFFFF',
+        primaryActive: '#0F9AA7',
         line18: '#ECEEEB',
-        base: '#101828'
+        headerBlack: '#101828',
       }
     },
   },
