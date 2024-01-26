@@ -9,7 +9,7 @@ const loadingBarWidth = {
     end: 0
 }
 
-const createCampaign = ({ pieces }) => {
+const selectPiece = ({ pieces }) => {
     return (
         <>
             <Navbar width={loadingBarWidth} />
@@ -18,7 +18,7 @@ const createCampaign = ({ pieces }) => {
     )
 }
 
-export default createCampaign
+export default selectPiece
 
 export const getServerSideProps = async () => {
     try {

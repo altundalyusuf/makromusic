@@ -18,6 +18,7 @@ module.exports = {
         primaryActive: '#0F9AA7',
         line18: '#ECEEEB',
         headerBlack: '#101828',
+        surfaceSecondary: '#E9EBF0',
       }
     },
   },

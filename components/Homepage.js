@@ -9,7 +9,7 @@ const Homepage = ({ campaign }) => {
 
     const handleClick = () => {
         dispatch(saveCreatedCampaign(campaign));
-        router.push('/create-campaign');
+        router.push('/selectPiece');
     }
     return (
         <>
@@ -18,7 +18,7 @@ const Homepage = ({ campaign }) => {
 ">
                 makromusic Task
             </div>
-            <CustomButton customProps={{ name: 'Kampanya Oluştur', className: 'text-white' }} onClick={handleClick} />
+            <CustomButton customProps={{ name: 'Kampanya Oluştur', textColor: 'text-white' }} onClick={handleClick} />
         </>
     )
 }

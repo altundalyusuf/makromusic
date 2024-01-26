@@ -3,6 +3,6 @@ import createCampaignReducer from './slices/createCampaignSlice'
 
 export const store = configureStore({
     reducer: {
-        createdCampaign: createCampaignReducer,
+        createCampaign: createCampaignReducer,
     }
 })
