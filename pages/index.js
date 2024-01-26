@@ -1,7 +1,11 @@
 import axios from "axios";
 import Homepage from "@/components/Homepage";
+import { usePathname } from "next/navigation";
 
 export default function Home({ campaign }) {
+  const pathname = usePathname()
+  console.log('pathname', pathname)
+
   return (
     <>
       <main>

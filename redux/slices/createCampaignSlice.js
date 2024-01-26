@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
+    activeForm: 'form1',
     createdCampaign: null,
     pieceName: null,
     noPieceChecked: false,
@@ -10,6 +11,9 @@ export const createCampaignSlice = createSlice({
     name: 'createCampaign',
     initialState,
     reducers: {
+        changeNavbar: (state, action) => {
+            state.activeForm = action.payload;
+        },
         saveCreatedCampaign: (state, action) => {
             state.createdCampaign = action.payload;
         },
@@ -21,6 +25,6 @@ export const createCampaignSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { saveCreatedCampaign, savePieceInfo } = createCampaignSlice.actions
+export const { changeNavbar, saveCreatedCampaign, savePieceInfo } = createCampaignSlice.actions
 
 export default createCampaignSlice.reducer

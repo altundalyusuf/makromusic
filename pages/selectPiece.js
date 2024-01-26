@@ -1,18 +1,11 @@
 import ChoosePiece from '@/components/ChoosePiece'
-import Navbar from '@/components/Navbar'
 import axios from 'axios'
 import React from 'react'
 
-const loadingBarWidth = {
-    start: 40,
-    center: 0,
-    end: 0
-}
-
 const selectPiece = ({ pieces }) => {
+
     return (
         <>
-            <Navbar width={loadingBarWidth} />
             <ChoosePiece pieces={pieces} />
         </>
     )

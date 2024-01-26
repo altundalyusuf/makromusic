@@ -2,8 +2,10 @@ import Head from "next/head";
 import "@/styles/globals.css";
 import { store } from '../redux/store'
 import { Provider } from "react-redux";
+import Layout from "@/components/Layout";
 
 export default function App({ Component, pageProps }) {
+
   return (
     <>
       <Head>
@@ -12,7 +14,9 @@ export default function App({ Component, pageProps }) {
       </Head>
 
       <Provider store={store}>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </Provider>
     </>
   )
