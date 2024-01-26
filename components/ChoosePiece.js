@@ -52,15 +52,15 @@ const ChoosePiece = ({ pieces }) => {
     }
 
     const handleBack = () => {
-        router.push('/')
+        router.back();
     }
     const handleContinue = () => {
         if (isChecked) {
             dispatch(savePieceInfo({ pieceName: null, noPieceChecked: true }));
-            router.push('/details')
+            router.push('details')
         } else {
             dispatch(savePieceInfo({ pieceName: value, noPieceChecked: false }));
-            router.push('/details')
+            router.push('details')
         }
     }
 

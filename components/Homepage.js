@@ -9,7 +9,7 @@ const Homepage = ({ campaign }) => {
 
     const handleClick = () => {
         dispatch(saveCreatedCampaign(campaign));
-        router.push('/selectPiece');
+        router.push('selectPiece');
     }
     return (
         <>

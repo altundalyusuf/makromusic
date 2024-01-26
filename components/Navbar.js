@@ -27,7 +27,7 @@ const Navbar = ({ activeForm }) => {
 
     return (
         <>
-            <div className='border border-bottom p-8 mb-28 grid grid-cols-3'>
+            <div className='border border-bottom p-8 mb-20 grid grid-cols-3'>
                 <div className='text-center text-headerBlack text-xl leading-[normal]'>
                     Kampanya Oluştur
                 </div>
