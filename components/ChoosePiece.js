@@ -1,10 +1,10 @@
 import filterOptions from '@/helpers/filterOptions';
 import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
-import CustomButton from './CustomButton';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { savePieceInfo } from '@/redux/slices/createCampaignSlice';
+import ButtonGroup from './ButtonGroup';
 
 const ChoosePiece = ({ pieces }) => {
     // Global states
@@ -101,12 +101,7 @@ const ChoosePiece = ({ pieces }) => {
                     </div>
                 </div>
                 {/* Buttons */}
-                <div className='flex justify-end'>
-                    <div className='me-3'>
-                        <CustomButton customProps={{ name: 'Geri Dön', bgColor: 'bg-surfaceSecondary', textColor: 'text-black' }} onClick={handleBack} />
-                    </div>
-                    <CustomButton customProps={{ name: 'Devam Et', textColor: 'text-white', disabled: isButtonDisabled }} onClick={handleContinue} />
-                </div>
+                <ButtonGroup handleClick={{ handleBack, handleContinue }} isButtonDisabled={isButtonDisabled} />
             </div>
         </>
     )

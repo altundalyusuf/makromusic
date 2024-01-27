@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import CustomButton from './CustomButton'
 import { useRouter } from 'next/router';
+import ButtonGroup from './ButtonGroup';
 
 const RegionAndGenreSelection = () => {
     const [selectedRegion, setSelectedRegion] = useState(null);
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
     const router = useRouter();
 
@@ -72,13 +74,7 @@ const RegionAndGenreSelection = () => {
                 </div>
             </div>
             {/* Buttons */}
-            <div className='flex justify-end'>
-                <div className='me-3'>
-                    <CustomButton customProps={{ name: 'Geri Dön', bgColor: 'bg-surfaceSecondary', textColor: 'text-black' }} onClick={handleBack} />
-                </div>
-                {/* <CustomButton customProps={{ name: 'Devam Et', textColor: 'text-white', disabled: isButtonDisabled }} onClick={handleContinue} /> */}
-                <CustomButton customProps={{ name: 'Devam Et', textColor: 'text-white' }} onClick={handleContinue} />
-            </div>
+            <ButtonGroup handleClick={{ handleBack, handleContinue }} isButtonDisabled={isButtonDisabled} />
         </div>
     )
 }
