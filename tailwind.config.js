@@ -19,6 +19,7 @@ module.exports = {
         line18: '#ECEEEB',
         headerBlack: '#101828',
         surfaceSecondary: '#E9EBF0',
+        priceColor: '#344054'
       }
     },
   },

@@ -8,7 +8,7 @@ const Homepage = ({ campaign }) => {
     const dispatch = useDispatch();
 
     const handleClick = () => {
-        dispatch(saveCreatedCampaign(campaign));
+        dispatch(saveCreatedCampaign(campaign.data));
         router.push('selectPiece');
     }
     return (

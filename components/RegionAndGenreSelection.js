@@ -3,18 +3,17 @@ import { useRouter } from 'next/router';
 import ButtonGroup from './ButtonGroup';
 import Select from 'react-select';
 import { useDispatch, useSelector } from 'react-redux';
-import { saveRegionAndGenres } from '@/redux/slices/createCampaignSlice';
+import { saveCreatedCampaign } from '@/redux/slices/createCampaignSlice';
 import filterOptions from '@/helpers/filterOptions';
 
 const RegionAndGenreSelection = ({ genres }) => {
     // Global state
-    const savedGenres = useSelector(state => state.createCampaign.genres);
-    const region = useSelector(state => state.createCampaign.region);
+    const createdCampaign = useSelector((state) => state.createCampaign.createdCampaign);
 
     // Local state
     const [options, setOptions] = useState([]);
-    const [selectedRegion, setSelectedRegion] = useState(region || null);
-    const [selectedOptions, setSelectedOptions] = useState(savedGenres || []);
+    const [selectedRegion, setSelectedRegion] = useState(createdCampaign.region || null);
+    const [selectedOptions, setSelectedOptions] = useState(createdCampaign.genres || []);
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const [isMounted, setIsMounted] = useState(false);
 
@@ -43,8 +42,11 @@ const RegionAndGenreSelection = ({ genres }) => {
         router.back()
     }
     const handleContinue = () => {
-        console.log('selectedRegion', selectedRegion)
-        dispatch(saveRegionAndGenres({ region: selectedRegion, genres: selectedOptions }));
+        dispatch(saveCreatedCampaign({
+            ...createdCampaign,
+            region: selectedRegion,
+            genres: selectedOptions,
+        }));
         router.push('packages')
     }
     return (

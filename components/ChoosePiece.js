@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { savePieceInfo } from '@/redux/slices/createCampaignSlice';
+import { saveCreatedCampaign, saveNoPieceCheck, savePieceName } from '@/redux/slices/createCampaignSlice';
 import ButtonGroup from './ButtonGroup';
 
 const ChoosePiece = ({ pieces }) => {
     // Global states
-    const pieceName = useSelector(state => state.createCampaign.pieceName);
+    const createdCampaign = useSelector((state) => state.createCampaign.createdCampaign);
+    const pieceName = useSelector((state) => state.createCampaign.pieceName);
     const noPieceChecked = useSelector(state => state.createCampaign.noPieceChecked);
 
     // Local states
@@ -25,7 +26,7 @@ const ChoosePiece = ({ pieces }) => {
     useEffect(() => {
         if (pieces.tracks && pieces.tracks.items) {
             const newOptions = pieces.tracks.items.map(item => ({
-                value: item.name,
+                value: item.href,
                 label: item.name,
             }));
             setOptions(newOptions);
@@ -56,10 +57,20 @@ const ChoosePiece = ({ pieces }) => {
     }
     const handleContinue = () => {
         if (isChecked) {
-            dispatch(savePieceInfo({ pieceName: null, noPieceChecked: true }));
+            dispatch(saveCreatedCampaign({
+                ...createdCampaign,
+                track_id: null,
+            }));
+            dispatch(savePieceName(null));
+            dispatch(saveNoPieceCheck(true));
             router.push('details')
         } else {
-            dispatch(savePieceInfo({ pieceName: value, noPieceChecked: false }));
+            dispatch(saveCreatedCampaign({
+                ...createdCampaign,
+                track_id: value.value,
+            }));
+            dispatch(savePieceName(value));
+            dispatch(saveNoPieceCheck(false));
             router.push('details')
         }
     }

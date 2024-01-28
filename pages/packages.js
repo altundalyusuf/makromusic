@@ -1,19 +1,31 @@
-import { changeNavbar } from '@/redux/slices/createCampaignSlice';
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import axios from "axios";
+import PackageCard from "@/components/PackageCard";
 
-const packages = () => {
-    const genres = useSelector(state => state.createCampaign.genres);
-    const region = useSelector(state => state.createCampaign.region);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(changeNavbar('form3'));
-    }, [])
+const Packages = ({ packages }) => {
+
     return (
-        <>
-            Select Package
-        </>
-    )
-}
+        <PackageCard packages={packages} />
+    );
+};
 
-export default packages
+export default Packages;
+
+export const getServerSideProps = async () => {
+    try {
+        const response = await axios.get(
+            "https://makromusic-web-task-api.onrender.com/get-packages"
+        );
+        return {
+            props: {
+                packages: response.data,
+            },
+        };
+    } catch (error) {
+        console.error(error);
+        return {
+            props: {
+                packages: [],
+            },
+        };
+    }
+};
